@@ -1,0 +1,105 @@
+
+<pbcoreDescriptionDocument xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html" xmlns:pb="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreAssetDate dateType="createdStart">1968</pbcoreAssetDate>
+  <pbcoreAssetDate dateType="createdEnd">1979</pbcoreAssetDate>
+  <pbcoreIdentifier source="munge_fm_key">DP R1OFW 76OMC QGKJ5 10AXM</pbcoreIdentifier>
+  <pbcoreIdentifier source="fm_key">FLI0023480</pbcoreIdentifier>
+  <pbcoreTitle annotation="Title supplied by cataloger." titleType="Main">Brookgreen Gardens and zoo--Huntington--home movies</pbcoreTitle>
+  <pbcoreTitle annotation="Huntington 19" titleType="Item">Huntington 19</pbcoreTitle>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects"></pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects">Zoo animals.</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects">Sculpture.</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects">Murrells Inlet (S.C.)--Description and travel.</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects">Zoos.</pbcoreSubject>
+  <pbcoreDescription descriptionType="summary">Scenes from South Carolina&apos;s Brookgreen Gardens, featuring the wooden sign on the highway entrance, statues, construction, and the zoo. Animals include deer, turkeys, a bobcat, an otter, a bald eagle, an alligator, and pheasants.</pbcoreDescription>
+  <pbcoreDescription descriptionType="sound content"></pbcoreDescription>
+  <pbcoreGenre>Amateur films</pbcoreGenre>
+  <pbcoreCoverage>
+    <coverage>Murrells Inlet (S.C.)</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage>Myrtle Beach (S.C.)</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage>Probably filmed between 1968 and 1979.</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCreator>
+    <creator annotation="PRC001089a">Archer Huntington</creator>
+    <creatorRole>Filmmaker</creatorRole>
+  </pbcoreCreator>
+  <pbcoreRightsSummary>
+    <rightsSummary source="copyright_statement">Copyright University of South Carolina. All rights reserved.</rightsSummary>
+    <rightsSummary source="donor_info">Robin Salmon, for Brookgreen Gardens</rightsSummary>
+    <rightsSummary source="preservedBy"></rightsSummary>
+  </pbcoreRightsSummary>
+  <pbcoreInstantiation endTime="" startTime="" timeAnnotation="384">
+    <instantiationIdentifier annotation="" source="accession_number">2012.17506</instantiationIdentifier>
+    <instantiationIdentifier annotation="" source="barcode">110002189913</instantiationIdentifier>
+    <instantiationIdentifier source="Instantiation Munge Key">NMGJZ FBUKW ZLBYQ SHADT</instantiationIdentifier>
+    <instantiationPhysical>Film: 16mm</instantiationPhysical>
+    <instantiationStandard>Film</instantiationStandard>
+    <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+    <instantiationGenerations>Reversal: positive</instantiationGenerations>
+    <instantiationColors>Color</instantiationColors>
+    <instantiationEssenceTrack>
+      <essenceTrackType>Video</essenceTrackType>
+      <essenceTrackStandard>Film</essenceTrackStandard>
+      <essenceTrackFrameRate>29.97</essenceTrackFrameRate>
+      <essenceTrackAspectRatio>1.37:1 (Academy)</essenceTrackAspectRatio>
+    </instantiationEssenceTrack>
+    <instantiationEssenceTrack>
+      <essenceTrackType>Audio</essenceTrackType>
+      <essenceTrackStandard>Magnetic</essenceTrackStandard>
+    </instantiationEssenceTrack>
+    <instantiationRights>
+      <rightsSummary source="accessStatement">Archival element. Not available for viewing.</rightsSummary>
+    </instantiationRights>
+    <instantiationAnnotation annotationType="filmbase">Nitrate</instantiationAnnotation>
+    <instantiationAnnotation annotationType="Technical Note">There is no visible edge code on this film.</instantiationAnnotation>
+  </pbcoreInstantiation>
+  <pbcoreInstantiation endTime="" startTime="04" timeAnnotation="">
+    <instantiationIdentifier annotation="" source="accession_number">2012.17546</instantiationIdentifier>
+    <instantiationIdentifier source="tape_number">MC 1262</instantiationIdentifier>
+    <instantiationIdentifier source="Instantiation Munge Key">NMGJZ FBUKW ZLD8O LWC7L</instantiationIdentifier>
+    <instantiationDate dateType="created">?-?-?</instantiationDate>
+    <instantiationPhysical>Betacam SP</instantiationPhysical>
+    <instantiationStandard>NTSC</instantiationStandard>
+    <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+    <instantiationGenerations>Master</instantiationGenerations>
+    <instantiationColors>Color</instantiationColors>
+    <instantiationEssenceTrack>
+      <essenceTrackType>Video</essenceTrackType>
+      <essenceTrackStandard>NTSC</essenceTrackStandard>
+      <essenceTrackFrameRate>29.97</essenceTrackFrameRate>
+      <essenceTrackAspectRatio>4:3</essenceTrackAspectRatio>
+      <essenceTrackAnnotation annotationType="transferFPS">24</essenceTrackAnnotation>
+    </instantiationEssenceTrack>
+    <instantiationEssenceTrack>
+      <essenceTrackType>Audio</essenceTrackType>
+      <essenceTrackStandard>Sound</essenceTrackStandard>
+    </instantiationEssenceTrack>
+    <instantiationRights>
+      <rightsSummary source="accessStatement">Archival master tape. Not available for viewing.</rightsSummary>
+    </instantiationRights>
+  </pbcoreInstantiation>
+  <pbcoreTitle titleType="alternative"></pbcoreTitle>
+  <pbcoreTitle titleType="International"></pbcoreTitle>
+  <pbcoreTitle titleType="Series"></pbcoreTitle>
+  <pbcoreIdentifier source="oclc"></pbcoreIdentifier>
+  <pbcoreIdentifier source="bib"></pbcoreIdentifier>
+  <pbcoreAssetDate dateType="publishedStart"></pbcoreAssetDate>
+  <pbcoreAssetDate dateType="publishedEnd"></pbcoreAssetDate>
+  <pbcorePublisher>
+    <publisher></publisher>
+    <publisherRole></publisherRole>
+  </pbcorePublisher>
+  <pbcoreContributor>
+    <contributor></contributor>
+    <contributorRole></contributorRole>
+  </pbcoreContributor>
+  <pbcoreSubject>Brookgreen Gardens.</pbcoreSubject>
+  <pbcoreSubject>Deer.</pbcoreSubject>
+</pbcoreDescriptionDocument>

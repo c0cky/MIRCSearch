@@ -1,0 +1,465 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="{% static 'mirc/d3.min.js' %}"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="{% static 'mirc/jquery.min.js' %}" type="text/javascript"></script>
+    <!--script src="js/jquery.lint.js" type="text/javascript" charset="utf-8"></script-->
+    <link rel="stylesheet" href="{% static 'mirc/prettyPhoto.css' %}" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+    <script src="{% static 'jquery.prettyPhoto.js' %}" type="text/javascript" charset="utf-8"></script>
+
+    <style type="text/css" media="screen">
+        * { margin: 0; padding: 0; }
+
+        /*body {*/
+            /*background: #282828;*/
+            /*font: 62.5%/1.2 Arial, Verdana, Sans-Serif;*/
+            /*padding: 0 20px;*/
+        /*}*/
+
+        h1 { font-family: Georgia; font-style: italic; margin-bottom: 10px; }
+
+        h2 {
+            font-family: Georgia;
+            font-style: italic;
+            margin: 25px 0 5px 0;
+        }
+
+        p { font-size: 1.2em; }
+
+        ul li { display: inline; }
+
+        .wide {
+            border-bottom: 1px #000 solid;
+            width: 4000px;
+        }
+
+        .fleft { float: left; margin: 0 20px 0 0; }
+
+        .cboth { clear: both; }
+
+        #main {
+            background: #fff;
+            margin: 0 auto;
+            padding: 30px;
+            width: 1000px;
+        }
+    </style>
+
+    <style type="text/css">
+
+        div.tooltip {
+            position: absolute;
+            text-align: center;
+            width: 60px;
+            height: 60px;
+            padding: 2px;
+            font: 12px sans-serif;
+            background: lightsteelblue;
+            border: 0px;
+            border-radius: 2px;
+            pointer-events: none;
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+
+//gets the width and height of the browser
+var width = 0, height = 0;
+if( typeof( window.innerWidth ) == 'number' ) {
+    //Non-IE
+    width = window.innerWidth;
+    height = window.innerHeight;
+} else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+    //IE 6+ in 'standards compliant mode'
+    width = document.documentElement.clientWidth;
+    height = document.documentElement.clientHeight;
+} else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+    //IE 4 compatible
+    width = document.body.clientWidth;
+    height = document.body.clientHeight;
+}
+
+//just because I don't want stuff so close to the bottom.
+height -= 100;
+
+//sets up the circle positions and starting data
+var jsonCircles = [
+    {
+        "x_axis": width/2,
+        "y_axis": height/2,
+        "imgAdr": "http://www.extremetech.com/wp-content/uploads/2013/08/bitcoin1.jpg"
+        ,"root" : true
+        ,"id"   : 1
+        ,"info" : "This is snake plissken"
+        ,"video": "CFC_Uproar_in_Heaven_Acc1_edit.m4v"
+        ,"title": "Title Holder"
+    }, {
+        "x_axis": width/4,
+        "y_axis": height/4,
+        "imgAdr": "http://www.extremetech.com/wp-content/uploads/2013/08/bitcoin1.jpg"
+        ,"root"  : false
+        ,"id"   : 2
+        ,"info" : "crypto currency"
+        ,"video": "CFC_Uproar_in_Heaven_Acc1_edit.m4v"
+        ,"title": "Title Holder"
+    }, {
+        "x_axis": 3*width/4 ,
+        "y_axis": height/4,
+        "imgAdr": "http://www.extremetech.com/wp-content/uploads/2013/08/bitcoin1.jpg"
+        ,"root"  : false
+        ,"id"   : 3
+        ,"info" : "crypto currency"
+        ,"video": "CFC_Uproar_in_Heaven_Acc1_edit.m4v"
+        ,"title": "Title Holder"
+    },
+    {
+        "x_axis": width/4,
+        "y_axis": 3*height/4,
+        "imgAdr": "http://www.extremetech.com/wp-content/uploads/2013/08/bitcoin1.jpg"
+        ,"root"  : false
+        ,"id"   : 4
+        ,"info" : "crypto currency"
+        ,"video": "CFC_Uproar_in_Heaven_Acc1_edit.m4v"
+        ,"title": "Title Holder"
+    }, {
+        "x_axis": 3*width/4 ,
+        "y_axis": 3*height/4,
+        "imgAdr": "http://www.extremetech.com/wp-content/uploads/2013/08/bitcoin1.jpg"
+        ,"root"  : false
+        ,"id"   : 5
+        ,"info" : "crypto currency"
+        ,"video": "CFC_Uproar_in_Heaven_Acc1_edit.m4v"
+        ,"title": "Title Holder"
+    },
+    {
+        "x_axis": width/2,
+        "y_axis": height/8,
+        "imgAdr": "http://www.extremetech.com/wp-content/uploads/2013/08/bitcoin1.jpg"
+        ,"root"  : false
+        ,"id"   : 6
+        ,"info" : "This is snake plissken"
+        ,"video": "CFC_Uproar_in_Heaven_Acc1_edit.m4v"
+        ,"title": "Title Holder"
+    }, {
+        "x_axis": width/2 ,
+        "y_axis": 7 * height/8,
+        "imgAdr": "http://www.extremetech.com/wp-content/uploads/2013/08/bitcoin1.jpg"
+        ,"root"  : false
+        ,"id"   : 7
+        ,"info" : "crypto currency"
+        ,"video": "CFC_Uproar_in_Heaven_Acc1_edit.m4v"
+        ,"title": "Title Holder"
+    },
+    {
+        "x_axis": width/3,
+        "y_axis": height/3,
+        "imgAdr": "http://www.extremetech.com/wp-content/uploads/2013/08/bitcoin1.jpg"
+        ,"root"  : false
+        ,"id"   : 8
+        ,"info" : "crypto currency"
+        ,"video": "CFC_Uproar_in_Heaven_Acc1_edit.m4v"
+        ,"title": "Title Holder"
+    }, {
+        "x_axis": 2*width/3 ,
+        "y_axis": height/3,
+        "imgAdr": "http://www.extremetech.com/wp-content/uploads/2013/08/bitcoin1.jpg"
+        ,"root"  : false
+        ,"id"   : 9
+        ,"info" : "crypto currency"
+        ,"video": "CFC_Uproar_in_Heaven_Acc1_edit.m4v"
+        ,"title": "Title Holder"
+    },
+    {
+        "x_axis": width/3,
+        "y_axis": 2* height/3,
+        "imgAdr": "http://www.extremetech.com/wp-content/uploads/2013/08/bitcoin1.jpg"
+        ,"root"  : false
+        ,"id"   : 10
+        ,"info" : "This is snake plissken"
+        ,"video": "CFC_Uproar_in_Heaven_Acc1_edit.m4v"
+        ,"title": "Title Holder"
+    }, {
+        "x_axis": 2*width/3 ,
+        "y_axis": 2*height/3,
+        "imgAdr": "http://www.extremetech.com/wp-content/uploads/2013/08/bitcoin1.jpg"
+        ,"root"  : false
+        ,"id"   : 11
+        ,"info" : "This is snake plissken"
+        ,"video": "CFC_Uproar_in_Heaven_Acc1_edit.m4v"
+        ,"title": "Title Holder"
+    },
+    {
+        "x_axis": 3*width/7,
+        "y_axis": height/7,
+        "imgAdr": "http://www.extremetech.com/wp-content/uploads/2013/08/bitcoin1.jpg"
+        ,"root"  : false
+        ,"id"   : 12
+        ,"info" : "crypto currency"
+        ,"video": "CFC_Uproar_in_Heaven_Acc1_edit.m4v"
+        ,"title": "Title Holder"
+    }, {
+        "x_axis": 4*width/7 ,
+        "y_axis": height/7,
+        "imgAdr": "http://www.extremetech.com/wp-content/uploads/2013/08/bitcoin1.jpg"
+        ,"root"  : false
+        ,"id"   : 13
+        ,"info" : "crypto currency"
+        ,"video": "CFC_Uproar_in_Heaven_Acc1_edit.m4v"
+        ,"title": "Title Holder"
+    },
+    {
+        "x_axis": 3*width/7,
+        "y_axis": 6*height/7,
+        "imgAdr": "http://www.extremetech.com/wp-content/uploads/2013/08/bitcoin1.jpg"
+        ,"root"  : false
+        ,"id"   : 14
+        ,"info" : "crypto currency"
+        ,"video": "CFC_Uproar_in_Heaven_Acc1_edit.m4v"
+        ,"title": "Title Holder"
+    }, {
+        "x_axis": 4*width/7 ,
+        "y_axis": 6*height/7,
+        "imgAdr": "http://www.extremetech.com/wp-content/uploads/2013/08/bitcoin1.jpg"
+        ,"root"  : false
+        ,"id"   : 15
+        ,"info" : "crypto currency"
+        ,"video": "CFC_Uproar_in_Heaven_Acc1_edit.m4v"
+        ,"title": "Title Holder"
+    }];
+
+
+//creates the svg container for the objects
+var svgContainer = d3.select("body")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+//variable to make sure one circle clickable at a time
+var oneAtATime = true;
+
+var t0 = Date.now();
+//makes sure the data isn't messed up ~reason is on d3js git
+var data = jsonCircles.slice();
+
+//variables for objects
+var obj;
+var rootIndex = 0;
+var div;
+var api_vid;
+var api_title;
+var api_desc;
+
+
+
+div = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
+
+
+//the function to load all the objects and add clickables
+var refresh = function(){
+
+    //adds the data with a key to identify each of the individual objects
+    var circles = svgContainer.selectAll("image")
+            .data(data, function(d){return d.id;});
+
+    //adds the circles with their data from the JSON
+    circles.enter()
+            .append("image")
+            .attr("xlink:href", function(d){return d.imgAdr;})
+            .attr("x", function(d){return d.x_axis;})
+            .attr("y", function(d){return d.y_axis;})
+            .attr("width", 80)
+            .attr("height", 80)
+            .attr("root", function(d){return d.root;})
+            .attr("id", function(d){return d.id;})
+        //.style("fill","transparent")
+        //this is the function that is executed when the circle is clicked on
+            .on("click",
+            function(d)
+            {
+
+                //makes sure the circle is not the 'root' and not another circle is moving
+                if(d3.select(this).attr("root") == 'false' && oneAtATime == true)
+                {
+
+                    //changes the variable to false so nothing else can move
+                    oneAtATime = false;
+                    //gets the root node
+                    var mid = d3.select("[root=true]");
+
+
+                    //moves the clicked circle to the roots position
+                    d3.select(this).transition().attr("x", mid.attr("x") ).attr("y", mid.attr("y")).attr("id", mid.attr("id")).ease("back").duration("3000")
+                        //once the animation is done
+                            .each("end",
+                            function (d)
+                            {
+
+                                d3.select("[root=true]").remove();
+
+                                d3.select(this).attr("root", 'true');
+
+
+                                //allows things to be clicked again
+                                oneAtATime = true;
+
+                                //creates a new object with the values from the previous clicked
+                                obj =
+                                {
+                                    "x_axis": d.x_axis ,
+                                    "y_axis": d.y_axis,
+                                    "imgAdr": d.imgAdr,
+                                    "root"  : d.root,
+                                    "id"    : d.id,
+                                    "info"  : d.info,
+                                    "video" : d.video
+                                };
+
+
+                                //removes the data from the old root from the JSON array
+                                data.splice(rootIndex, 1);
+
+
+                                //adds the new obj to the JSON array
+                                data.push(obj);
+
+
+
+                                //changes the array values of the now root node
+                                d.x_axis = mid.attr("x");
+                                d.y_axis = mid.attr("y");
+                                d.root = 'true';
+                                d.id = mid.attr("id");
+
+
+                                rootIndex = data.indexOf(d);
+
+
+
+                                //reload
+                                refresh();
+
+                                swirl();
+
+                            
+                          //      api_vid = d.imgAdr;
+                           //     api_title = d.title;
+                          //      api_desc = d.info;
+                          //      $().prettyPhoto({social_tools: false, modal: true, allow_resize:true});
+                          //      d3.select(this)
+                          //              .attr("rel", "prettyPhoto").attr("onclick", "$.prettyPhoto.open(api_vid,api_title,api_desc); return false");
+                            }
+                    );
+
+                }
+                else if (d3.select(this).attr("root") == 'true' && oneAtATime == true)
+                {
+                    console.log(api_desc + " " + api_title+ " " +api_vid );
+                    d3.xhr('ajax/', function(error, data)
+                    {
+                      alert(data);
+                    });
+                    
+                }
+
+            }).on("mouseover", mouseover)
+            .on("mousemove",function(d){
+                if(oneAtATime == true) {
+                    div.html(d.info)
+                            .style("left", (d3.event.pageX) + "px")
+                            .style("top", (d3.event.pageY - 56) + "px");
+                }else{
+                    div.transition()
+                            .duration(500)
+                            .style("opacity", 0);
+                }
+            })
+            .on("mouseout", mouseout);
+
+
+
+
+    ;
+
+
+}
+
+function mouseover()
+{
+    div.transition()
+            .duration(500)
+            .style("opacity", 1);
+}
+
+
+
+function mouseout()
+{
+    div.transition()
+            .duration(500)
+            .style("opacity", 0);
+}
+
+
+
+var swirl = function()
+{
+    var timeV = 0;
+    var id = setInterval(function() {
+
+        var delta = (Date.now() - t0);
+        var mid = d3.select("[root=true]");
+
+        d3.selectAll("image").attr("transform", function(d) {
+            if(d.root != mid.attr("root")){
+                return "rotate(" + (delta * d.id) +  "," + mid.attr("x") + "," + mid.attr("y") + ")";
+            }
+        });
+        timeV++;
+        if(timeV == 15){
+            mid.moveToBack();
+            clearInterval(id);
+            d3.selectAll("image").transition().ease("elastic").attr("transform", function(d){return "rotate(" + 0 + ")";});
+        }
+
+    }, 15);
+
+}
+
+/**
+ * addVideo
+ * adds the video as a link to the root node so when clicked spawns the light box and plays the video.
+ */
+var addVideo = function()
+{
+
+}
+
+d3.selection.prototype.moveToBack = function() {
+    return this.each(function() {
+        var firstChild = this.parentNode.firstChild;
+        if (firstChild) {
+            this.parentNode.insertBefore(this, firstChild);
+        }
+    });
+};
+
+
+//executes refresh when the page is loaded
+refresh();
+
+</script>
+</body>
+</html>
+
+

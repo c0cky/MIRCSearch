@@ -1,0 +1,282 @@
+
+<pbcoreDescriptionDocument xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html" xmlns:pb="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreTitle annotation="" titleType="Main">Uproar in heaven--excerpt</pbcoreTitle>
+  <pbcoreTitle annotation="" titleType="Item"></pbcoreTitle>
+  <pbcoreTitle titleType="International">大闹天宫</pbcoreTitle>
+  <pbcoreIdentifier source="munge_fm_key">NMGJZ FBUKZ KRFRC EFB1O</pbcoreIdentifier>
+  <pbcoreIdentifier source="fm_key">FMIMP1001000845</pbcoreIdentifier>
+  <pbcoreAssetDate dateType="publishedStart">1965</pbcoreAssetDate>
+  <pbcoreAssetDate dateType="publishedEnd">1965</pbcoreAssetDate>
+  <pbcoreDescription descriptionType="summary">An adaptation of the first 7 chapters of  Wu Cheng-En’s classic novel Journey to the West. Based on the classic mythological novel Journey to the West, the film focus on the mischievous Monkey King&apos;s early misadventures from the novel.The Monkey King decides to claim a giant pillar that fixes the sea in place. The Dragon King begs the Jade Emperor to punish Wukong. Rather than engage the mischievous Monkey King in a direct confrontation, the powers-that-be decide to appoint him to a largely meaningless position within heaven’s bureaucracy in order to keep an eye on him. But when he finds out the truth, he revolts against heaven, setting off a series of events that culminates in all-out war. He returns home and gathers his forces, flying a banner that reads, “Great Sage Equal to Heaven.” This blasphemous display of arrogance provokes the Jade Emperor’s ire, and the armies of heaven rain down on the Mountain of Flowers and Fruit. </pbcoreDescription>
+  <pbcoreDescription descriptionType="sound content"></pbcoreDescription>
+  <pbcoreGenre>Feature films</pbcoreGenre>
+  <pbcoreGenre>Animated films</pbcoreGenre>
+  <pbcoreSubject subjectType="keyword">Animation</pbcoreSubject>
+  <pbcoreSubject subjectType="keyword">Monkeys</pbcoreSubject>
+  <pbcoreSubject>Animated films. </pbcoreSubject>
+  <pbcoreSubject>Wu, Cheng&apos;en, ca. 1500-ca. 1582 </pbcoreSubject>
+  <pbcoreCoverage>
+    <coverage>Released in 1965.</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCreator>
+    <creator>Shanghai mei shu dian ying zhi pian chang</creator>
+    <creatorRole>Production unit</creatorRole>
+  </pbcoreCreator>
+  <pbcoreContributor>
+    <contributor>Laiming  Wan</contributor>
+    <contributorRole>Director</contributorRole>
+  </pbcoreContributor>
+  <pbcoreRightsSummary>
+    <rightsSummary source="copyright_statement">Noncommercial exhibition (see agreement)</rightsSummary>
+    <rightsSummary source="donor_info">Embassy of the People’s Republic of China in the United States of America</rightsSummary>
+    <rightsSummary source="preservedBy"></rightsSummary>
+  </pbcoreRightsSummary>
+  <pbcoreInstantiation endTime="" startTime="" timeAnnotation="9960">
+    <instantiationIdentifier annotation="12 reels" source="accession_number">2010.10840</instantiationIdentifier>
+    <instantiationIdentifier annotation="" source="barcode">110002749777</instantiationIdentifier>
+    <instantiationPhysical>Film: 35mm</instantiationPhysical>
+    <instantiationStandard>Film</instantiationStandard>
+    <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+    <instantiationGenerations></instantiationGenerations>
+    <instantiationColors>Color</instantiationColors>
+    <instantiationAlternativeModes></instantiationAlternativeModes>
+    <instantiationEssenceTrack>
+      <essenceTrackType>audio</essenceTrackType>
+      <essenceTrackStandard>Film</essenceTrackStandard>
+      <essenceTrackAspectRatio>1.37:1 (Academy)</essenceTrackAspectRatio>
+      <essenceTrackFrameRate></essenceTrackFrameRate>
+      <essenceTrackEncoding></essenceTrackEncoding>
+      <essenceTrackSamplingRate></essenceTrackSamplingRate>
+      <essenceTrackBitDepth></essenceTrackBitDepth>
+      <essenceTrackAnnotation annotationType="Stream Size"></essenceTrackAnnotation>
+      <essenceTrackAnnotation annotationType="transferFPS"></essenceTrackAnnotation>
+    </instantiationEssenceTrack>
+    <instantiationEssenceTrack>
+      <essenceTrackType>audio</essenceTrackType>
+      <essenceTrackStandard>Variable-area optical</essenceTrackStandard>
+      <essenceTrackAspectRatio></essenceTrackAspectRatio>
+      <essenceTrackFrameRate></essenceTrackFrameRate>
+      <essenceTrackEncoding></essenceTrackEncoding>
+      <essenceTrackSamplingRate></essenceTrackSamplingRate>
+      <essenceTrackBitDepth></essenceTrackBitDepth>
+      <essenceTrackAnnotation annotationType="Stream Size"></essenceTrackAnnotation>
+      <essenceTrackAnnotation annotationType="transferFPS"></essenceTrackAnnotation>
+    </instantiationEssenceTrack>
+    <instantiationRights>
+      <rightsSummary source="accessStatement">Archival element. Not available for viewing.</rightsSummary>
+    </instantiationRights>
+    <instantiationAnnotation annotationType="filmbase">Acetate</instantiationAnnotation>
+    <instantiationAnnotation annotationType="Technical Note">Fuji 77 AJ / Slight color fading</instantiationAnnotation>
+    <instantiationPart timeAnnotation="660">
+      <instantiationIdentifier source="accession_number">2010.10840r1</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749777</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 1 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="800">
+      <instantiationIdentifier source="accession_number">2010.10840r2</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749778</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 2 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="780">
+      <instantiationIdentifier source="accession_number">2010.10840r3</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749779</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 3 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="780">
+      <instantiationIdentifier source="accession_number">2010.10840r4</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749780</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 4 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="810">
+      <instantiationIdentifier source="accession_number">2010.10840r5</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749781</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 5 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="810">
+      <instantiationIdentifier source="accession_number">2010.10840r6</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749782</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 6 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="930">
+      <instantiationIdentifier source="accession_number">2010.10840r7</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749783</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 7 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="930">
+      <instantiationIdentifier source="accession_number">2010.10840r8</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749784</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 8 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="950">
+      <instantiationIdentifier source="accession_number">2010.10840r9</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749785</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 9 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="730">
+      <instantiationIdentifier source="accession_number">2010.10840r10</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749786</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 10 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="930">
+      <instantiationIdentifier source="accession_number">2010.10840r11</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749787</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 11 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="850">
+      <instantiationIdentifier source="accession_number">2010.10840r12</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002750400</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 12 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationAnnotation annotationType="Primary Instantiation">not_applicable</instantiationAnnotation>
+    <instantiationIdentifier source="tape_number"></instantiationIdentifier>
+    <instantiationDate dateType="created"></instantiationDate>
+    <instantiationDigital annotation=""></instantiationDigital>
+    <instantiationDuration></instantiationDuration>
+    <instantiationLanguage>In Chinese with English voiceover</instantiationLanguage>
+    <rightsSummary source="accessStatement"></rightsSummary>
+  </pbcoreInstantiation>
+  <pbcoreInstantiation endTime="" startTime="" timeAnnotation="9960">
+    <instantiationIdentifier annotation="12 reels" source="accession_number">2010.10840</instantiationIdentifier>
+    <instantiationIdentifier annotation="" source="barcode">110002749777</instantiationIdentifier>
+    <instantiationPhysical>Film: 35mm</instantiationPhysical>
+    <instantiationStandard>Film</instantiationStandard>
+    <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+    <instantiationGenerations></instantiationGenerations>
+    <instantiationColors>Color</instantiationColors>
+    <instantiationAlternativeModes>in Chinese, with English voiceover,no subtitles</instantiationAlternativeModes>
+    <instantiationEssenceTrack>
+      <essenceTrackType>audio</essenceTrackType>
+      <essenceTrackStandard>Film</essenceTrackStandard>
+      <essenceTrackAspectRatio>1.37:1 (Academy)</essenceTrackAspectRatio>
+      <essenceTrackFrameRate></essenceTrackFrameRate>
+      <essenceTrackEncoding></essenceTrackEncoding>
+      <essenceTrackSamplingRate></essenceTrackSamplingRate>
+      <essenceTrackBitDepth></essenceTrackBitDepth>
+      <essenceTrackAnnotation annotationType="Stream Size"></essenceTrackAnnotation>
+      <essenceTrackAnnotation annotationType="transferFPS"></essenceTrackAnnotation>
+    </instantiationEssenceTrack>
+    <instantiationEssenceTrack>
+      <essenceTrackType>audio</essenceTrackType>
+      <essenceTrackStandard>Variable-area optical</essenceTrackStandard>
+      <essenceTrackAspectRatio></essenceTrackAspectRatio>
+      <essenceTrackFrameRate></essenceTrackFrameRate>
+      <essenceTrackEncoding></essenceTrackEncoding>
+      <essenceTrackSamplingRate></essenceTrackSamplingRate>
+      <essenceTrackBitDepth></essenceTrackBitDepth>
+      <essenceTrackAnnotation annotationType="Stream Size"></essenceTrackAnnotation>
+      <essenceTrackAnnotation annotationType="transferFPS"></essenceTrackAnnotation>
+    </instantiationEssenceTrack>
+    <instantiationRights>
+      <rightsSummary source="accessStatement">Archival element. Not available for viewing.</rightsSummary>
+    </instantiationRights>
+    <instantiationAnnotation annotationType="filmbase">Acetate</instantiationAnnotation>
+    <instantiationAnnotation annotationType="Technical Note">Fuji 77 AJ / Slight color fading</instantiationAnnotation>
+    <instantiationPart timeAnnotation="660">
+      <instantiationIdentifier source="accession_number">2010.10840r1</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749777</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 1 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="800">
+      <instantiationIdentifier source="accession_number">2010.10840r2</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749778</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 2 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="780">
+      <instantiationIdentifier source="accession_number">2010.10840r3</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749779</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 3 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="780">
+      <instantiationIdentifier source="accession_number">2010.10840r4</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749780</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 4 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="810">
+      <instantiationIdentifier source="accession_number">2010.10840r5</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749781</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 5 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="810">
+      <instantiationIdentifier source="accession_number">2010.10840r6</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749782</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 6 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="930">
+      <instantiationIdentifier source="accession_number">2010.10840r7</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749783</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 7 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="930">
+      <instantiationIdentifier source="accession_number">2010.10840r8</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749784</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 8 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="950">
+      <instantiationIdentifier source="accession_number">2010.10840r9</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749785</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 9 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="730">
+      <instantiationIdentifier source="accession_number">2010.10840r10</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749786</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 10 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="930">
+      <instantiationIdentifier source="accession_number">2010.10840r11</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002749787</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 11 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationPart timeAnnotation="850">
+      <instantiationIdentifier source="accession_number">2010.10840r12</instantiationIdentifier>
+      <instantiationIdentifier source="barcode">110002750400</instantiationIdentifier>
+      <instantiationLocation>Moving Image Research Collections</instantiationLocation>
+      <instantiationAnnotation annotationType="Reel Number">Reel 12 of 12</instantiationAnnotation>
+    </instantiationPart>
+    <instantiationAnnotation annotationType="Primary Instantiation">not_applicable</instantiationAnnotation>
+    <instantiationIdentifier source="tape_number"></instantiationIdentifier>
+    <instantiationDate dateType="created"></instantiationDate>
+    <instantiationDigital annotation=""></instantiationDigital>
+    <instantiationDuration></instantiationDuration>
+    <instantiationLanguage></instantiationLanguage>
+    <rightsSummary source="accessStatement"></rightsSummary>
+  </pbcoreInstantiation>
+  <pbcoreTitle titleType="alternative"></pbcoreTitle>
+  <pbcoreTitle titleType="Series"></pbcoreTitle>
+  <pbcoreIdentifier source="oclc"></pbcoreIdentifier>
+  <pbcoreIdentifier source="bib"></pbcoreIdentifier>
+  <pbcoreIdentifier source="callnumber"></pbcoreIdentifier>
+  <pbcoreAssetDate dateType="createdStart"></pbcoreAssetDate>
+  <pbcoreAssetDate dateType="createdEnd"></pbcoreAssetDate>
+  <pbcoreCoverage>
+    <coverage></coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcorePublisher>
+    <publisher></publisher>
+    <publisherRole></publisherRole>
+  </pbcorePublisher>
+</pbcoreDescriptionDocument>
