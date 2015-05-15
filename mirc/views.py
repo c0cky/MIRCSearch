@@ -21,7 +21,10 @@ def noresults(request):
 def ajax(request):
     service = SessionServer('/Users/godboutc/Desktop/thesite/simdatabase')
     data = json.loads(request.body)
+    print "DATA: \n"
+    print data
     results = service.find_similar(data['identifier'], max_results=13)
+    print results
     screen = []
     temp = []
     address = ""
@@ -29,12 +32,13 @@ def ajax(request):
     jpg = '.jpg'
     for i in range(0, len(results)):
         temp = results[i][2]
-    address = beggining + results[i][0] + jpg
-    temp['imgAdr'] = address
-    screen.append(temp)
+        address = beggining + results[i][0] + jpg
+        temp['imgAdr'] = address
+        screen.append(temp)
     a = Assemble(screen, data['width'], data['height'])
     a.do_the_work()
     finished = a.to_list()
+    print "AJAX \n"
     print json.dumps(finished)
     return HttpResponse(json.dumps(finished), content_type = "application/json")
 
@@ -47,7 +51,7 @@ def rearrange(request):
     return HttpResponse(json.dumps(finished), content_type = "application/json")
 
 def search(request):
-    logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.DEBUG)
+    #logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.DEBUG)
     service = SessionServer('/Users/godboutc/Desktop/thesite/simdatabase')
     form = SearchForm(request.POST)
     if form.is_valid() == False:
