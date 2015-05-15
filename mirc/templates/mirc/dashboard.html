@@ -3,12 +3,16 @@
 <html lang="en">
 <head>
 <script type="text/javascript" src="{% static 'mirc/d3.min.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script src="{% static 'mirc/jquery.min.js' %}" type="text/javascript"></script>
+    <!--script src="{% static 'mirc/jquery.min.js' %}" type="text/javascript"></script-->
     <!--script src="js/jquery.lint.js" type="text/javascript" charset="utf-8"></script-->
     <link rel="stylesheet" href="{% static 'mirc/prettyPhoto.css' %}" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
     <script src="{% static 'mirc/jquery.prettyPhoto.js' %}" type="text/javascript" charset="utf-8"></script>
-    <script src="{% static 'mirc/bootstrap.min.js' %}"></script>
+    <!--script src="{% static 'mirc/bootstrap.min.js' %}"></script-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"></link>
 <!--
 TODO: -adjust so when the screen is first loaded the x and y coordinates are correct
       -when the browser is resized run the refresh()**
@@ -132,7 +136,7 @@ TODO: -adjust so when the screen is first loaded the x and y coordinates are cor
                     <a href="#">Dashboard</a>
                 </li>
                 <li>
-                    <a href="#">Shortcuts</a>
+                    <a href="#" data-toggle="modal" data-target="#cartmodal">Cart</a>
                 </li>
                 <li>
                     <a href="#">Overview</a>
@@ -186,7 +190,7 @@ TODO: -adjust so when the screen is first loaded the x and y coordinates are cor
 * ___ add tabs for left sidebar information filtering
 * _x_ hide left sidebar
 * _x_ create middle image larger
-* ___ make sure popovers stay in web browser and middle of image
+* _x_ make sure popovers stay in web browser and middle of image
 * ___ create reverse animation for backwards
 *
 *
@@ -315,11 +319,6 @@ textmodal.enter()
             .on("click",
             function(d)
             {
-
-            //hide the popover when the user clicks
-             //  var listItem = d3.select("#side").selectAll("li")[0][d.id]
-             //  $(listItem).popover('hide');
-             //  d3.select(listItem).attr("class", "btn popovers");
                 //makes sure the circle is not the 'root' and not another circle is moving
                 if(d3.select(this).attr("root") == 'false' && oneAtATime == true)
                 {
@@ -329,7 +328,6 @@ textmodal.enter()
 
                     //gets the root node
                     var mid = d3.select("[root=true]");
-
 
                     //moves the clicked circle to the roots position
                     d3.select(this).transition().attr("x", mid.attr("x") ).attr("y", mid.attr("y")).attr("id", mid.attr("id")).ease("back").duration("3000")
@@ -344,13 +342,11 @@ textmodal.enter()
                                 d3.select(this).attr("root", 'true');
 
 
-
-
                                 //creates a new object with the values from the previous clicked
                                 obj =
                                 {
                                     "title" : d.title,
-				                    "identifier"   : d.identifier,
+				                            "identifier"   : d.identifier,
                                     "x_axis": d.x_axis ,
                                     "y_axis": d.y_axis,
                                     "imgAdr": d.imgAdr,
@@ -369,7 +365,6 @@ textmodal.enter()
                                 data.push(obj);
 
 
-
                                 //changes the array values of the now root node
                                 d.x_axis = mid.attr("x");
                                 d.y_axis = mid.attr("y");
@@ -379,7 +374,6 @@ textmodal.enter()
                                 //d.DID = mid.attr("pid");
 
                                 rootIndex = data.indexOf(d);
-
 
 
 				d3.xhr('/mirc/ajax/')
@@ -855,4 +849,5 @@ $("#menu-toggle").click(function(e) {
 </script>
 
 
-</body></html>
+</body>
+</html>
