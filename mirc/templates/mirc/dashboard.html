@@ -83,6 +83,25 @@ TODO: -adjust so when the screen is first loaded the x and y coordinates are cor
   </div>
 </div>
 
+<!-- modal: arrangementModal -->
+<div class="modal fade bs-cart-modal-lg" id="arrangmentmodal" tabindex="-1" role="dialog" aria-labelledby="History" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div  class="modal-content">
+      <div  class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">History</h4>
+      </div>
+        <div id="arrangmentBody" class="modal-body">
+          </div>
+          <div class="modal-footer">
+             <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+          </div>
+    </div>
+  </div>
+</div>
+
 <!--modal: text based search results-->
 <div class="modal fade bs-modal-lg" tabindex="-1" role="dialog" aria-labelledby="TextBasedResults" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -336,7 +355,6 @@ textmodal.enter()
                             function (d)
                             {
                                 pastArrangements.push(data);
-                                updateArrangementModal();
 
                                 d3.select("[root=true]").remove();
 
@@ -833,37 +851,29 @@ function supports_html5_storage() {
   }
 }
 
+//get all past arrangments and show them all pretty like.
+// for (j = 0; j < pastArrangements.length; j++)
+// {
+//   for (i = 0; i < pastArrangements[j].length; i++) {
+//     //implement the prettyness hur.
+//     console.log(pastArrangements[j][i].title);
+//   }
+// }
+//
+// //get all the future arrangments and show them all pretty like.
+// for (j = 0; j < futureArrangements.length; j++)
+// {
+//   for (i = 0; i < futureArrangements[j].length; i++)
+//   {
+//     //implement the prettyness here
+//     console.log(futureArrangements[j][i].title);
+//   }
+// }
 
-/***********************************************************
-* updateArrangmentModal()
-*
-* This is the function that updates the arrangement modal
-* It maps out where the user has been in the data.
-*
-*
-*/
-function updateArrangementModal()
-{
-  //get all past arrangments and show them all pretty like.
-  for (j = 0; j < pastArrangements.length; j++)
-  {
-    for (i = 0; i < pastArrangements[j].length; i++) {
-      //implement the prettyness hur.
-      console.log(pastArrangements[j][i].title);
-    }
-  }
+//when it is shown we gonna dynamically generate the html
+$('#arrangementModal').on('show.bs.modal', function(e) {
 
-  //get all the future arrangments and show them all pretty like.
-  for (j = 0; j < futureArrangments.length; j++)
-  {
-    for (i = 0; i < futureArrangments[j].length; i++)
-    {
-      //implement the prettyness here
-      console.log(futureArrangments[j][i].title);
-    }
-  }
-
-}
+});
 
 
 //executes refresh when the page is loaded
