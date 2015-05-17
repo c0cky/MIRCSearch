@@ -147,7 +147,7 @@ TODO: -adjust so when the screen is first loaded the x and y coordinates are cor
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
+                    <a href="#side-toggle" id="side-toggle">
                         Start Bootstrap
                     </a>
                 </li>
@@ -179,7 +179,7 @@ TODO: -adjust so when the screen is first loaded the x and y coordinates are cor
         <!-- Page Content -->
         <div id="page-content-wrapper" style="height:100%">
             <div class="container-fluid" style="height:100%">
-                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+              <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                     <div id = "main" class="col-lg-12" style="height:85%">
                 </div>
             </div>
@@ -889,6 +889,12 @@ $("#menu-toggle").click(function(e) {
         setTimeout(function(){rearrange();}, 300);
     });
 
+$("#side-toggle").click(function(e)
+{
+  e.preventDefault();
+  $("#wrapper").toggleClass("toggled");
+  setTimeout(function(){rearrange();},300);
+});
 
 </script>
 
