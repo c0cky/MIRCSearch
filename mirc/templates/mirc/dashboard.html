@@ -139,7 +139,7 @@ TODO: -adjust so when the screen is first loaded the x and y coordinates are cor
                     <a href="#" data-toggle="modal" data-target="#cartmodal">Cart</a>
                 </li>
                 <li>
-                    <a href="#">Overview</a>
+                    <a href="#" data-toggle="modal" data-target="">Overview</a>
                 </li>
                 <li>
                     <a href="#">Events</a>
@@ -336,6 +336,7 @@ textmodal.enter()
                             function (d)
                             {
                                 pastArrangements.push(data);
+                                updateArrangementModal();
 
                                 d3.select("[root=true]").remove();
 
@@ -831,6 +832,39 @@ function supports_html5_storage() {
     return false;
   }
 }
+
+
+/***********************************************************
+* updateArrangmentModal()
+*
+* This is the function that updates the arrangement modal
+* It maps out where the user has been in the data.
+*
+*
+*/
+function updateArrangementModal()
+{
+  //get all past arrangments and show them all pretty like.
+  for (j = 0; j < pastArrangements.length; j++)
+  {
+    for (i = 0; i < pastArrangements[j].length; i++) {
+      //implement the prettyness hur.
+      console.log(pastArrangements[j][i].title);
+    }
+  }
+
+  //get all the future arrangments and show them all pretty like.
+  for (j = 0; j < futureArrangments.length; j++)
+  {
+    for (i = 0; i < futureArrangments[j].length; i++)
+    {
+      //implement the prettyness here
+      console.log(futureArrangments[j][i].title);
+    }
+  }
+
+}
+
 
 //executes refresh when the page is loaded
 refresh();
