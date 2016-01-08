@@ -84,3 +84,7 @@ STATIC_URL = '/static/'
 
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
+PIPELINE_COMPILERS = (
+  'react.utils.pipeline.JSXCompiler',
+)

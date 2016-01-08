@@ -19,7 +19,7 @@ def noresults(request):
     return render(request, 'mirc/main.html', {'form':form, 'error_message':"No results please search again."})
 
 def ajax(request):
-    service = SessionServer('/Users/godboutc/Desktop/Django/thesite/simdatabase')
+    service = SessionServer('/Users/camron/Desktop/MIRCSearch/thesite/simdatabase')
     data = json.loads(request.body)
     print "DATA: \n"
     print data
@@ -52,7 +52,7 @@ def rearrange(request):
 
 def search(request):
     #logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.DEBUG)
-    service = SessionServer('/Users/godboutc/Desktop/Django/thesite/simdatabase')
+    service = SessionServer('/Users/camron/Desktop/MIRCSearch/thesite/simdatabase')
     form = SearchForm(request.POST)
     if form.is_valid() == False:
         return HttpResponse()
