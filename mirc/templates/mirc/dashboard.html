@@ -2,23 +2,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script type="text/javascript" src="{% static 'mirc/d3.min.js' %}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'mirc/d3.min.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <!--script src="{% static 'mirc/jquery.min.js' %}" type="text/javascript"></script-->
     <!--script src="js/jquery.lint.js" type="text/javascript" charset="utf-8"></script-->
-    <link rel="stylesheet" href="{% static 'mirc/prettyPhoto.css' %}" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'mirc/prettyPhoto.css' %}" type="text/css" media="screen"
+          title="prettyPhoto main stylesheet" charset="utf-8"/>
     <script src="{% static 'mirc/jquery.prettyPhoto.js' %}" type="text/javascript" charset="utf-8"></script>
     <!--script src="{% static 'mirc/bootstrap.min.js' %}"></script-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"></link>
-<!--
-TODO: -adjust so when the screen is first loaded the x and y coordinates are correct
-      -when the browser is resized run the refresh()**
-           **although this may be a bad idea because it might constantly
-               run while resizing and kill the browser. MUST TEST.
--->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"/>
+    <!--
+    TODO: -adjust so when the screen is first loaded the x and y coordinates are correct
+          -when the browser is resized run the refresh()**
+               **although this may be a bad idea because it might constantly
+                   run while resizing and kill the browser. MUST TEST.
+    -->
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,854 +43,952 @@ TODO: -adjust so when the screen is first loaded the x and y coordinates are cor
 
 <body>
 <!--modal: root node-->
-<div class="modal fade bs-example-modal-lg" id="rootmodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">
-          <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-        </button>
-        <h4 class="modal-title" id="rootmodaltitle">Modal title</h4>
-      </div>
-          <div id="textmodalroot" class="modal-body">
+<div class="modal fade bs-example-modal-lg" id="rootmodal" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="rootmodaltitle">Modal title</h4>
+            </div>
+            <div id="textmodalroot" class="modal-body">
 
-          </div>
-          <div class="modal-footer">
-            <button type ="button" class = "btn btn-default pull-left" onclick="addToCartWrapper()" data-dismiss="modal"> Add to Cart </button>
-            <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
-          </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" onclick="addToCartWrapper()"
+                        data-dismiss="modal"> Add to Cart
+                </button>
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 
 <!--modal:CART-->
-<div class="modal fade bs-cart-modal-lg" id="cartmodal" tabindex="-1" role="dialog" aria-labelledby="My Cart" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div  class="modal-content">
-      <div  class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">
-          <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-        </button>
-        <h4 class="modal-title">Items</h4>
-      </div>
-        <div id="cartItems" class="modal-body">
-          </div>
-          <div class="modal-footer">
-             <button type="button" class ="btn btn-default pull-left" onclick="clearCart()" data-dismiss="modal">Clear Cart</button>
-             <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
-          </div>
+<div class="modal fade bs-cart-modal-lg" id="cartmodal" tabindex="-1" role="dialog" aria-labelledby="My Cart"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Items</h4>
+            </div>
+            <div id="cartItems" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" onclick="clearCart()" data-dismiss="modal">Clear
+                    Cart
+                </button>
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <!-- modal: arrangementModal -->
-<div class="modal fade bs-cart-modal-lg" id="arrangmentmodal" tabindex="-1" role="dialog" aria-labelledby="History" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div  class="modal-content">
-      <div  class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">
-          <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-        </button>
-        <h4 class="modal-title">History</h4>
-      </div>
-        <div id="arrangmentBody" class="modal-body">
-          </div>
-          <div class="modal-footer">
-             <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
-          </div>
+<div class="modal fade bs-cart-modal-lg" id="arrangementModal" tabindex="-1" role="dialog" aria-labelledby="History"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">History</h4><br>
+                <ul class="nav nav-pills" id="arrangementPills">
+                </ul>
+            </div>
+            <div id="arrangementItems" class="modal-body">
+                <table class="table table-condensed" id="arrangementTable">
+
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <!--modal: text based search results-->
-<div class="modal fade bs-modal-lg" id="textresults" tabindex="-1" role="dialog" aria-labelledby="TextBasedResults" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div  class="modal-content">
-      <div  class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">
-          <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-        </button>
-        <h4 class="modal-title">Results</h4>
-      </div>
-        <div id="textmodalresults" class="modal-body">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
+<div class="modal fade bs-modal-lg" tabindex="-1" role="dialog" aria-labelledby="TextBasedResults" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Results</h4>
+            </div>
+            <div id="textmodalresults" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <!--modal: help information-->
-<div class="modal fade bs-help-modal-lg" id="help" tabindex="-1" role="dialog" aria-labelledby="help" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div  class="modal-content">
-      <div  class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">
-          <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-        </button>
-        <h4 class="modal-title">Help</h4>
-      </div>
-        <div id="helpbody" class="modal-body">
-        Your search results will appear below. The most relevant clip to your search query will be in the middle surrounded by other related clips ranked by how close it matches the clip in the middle. You can click on the #1 result in the middle to get all the information about that clip. If you click on a related clip it will pull it to the middle and pull up the clips related to it. If you want to get information on a clip that isnt in the middle you can hover over the videos on the side tool bar to get a brief summary. If you don't like pictures you can click 'Text Results' on the top toolbar to get information on all 13 videos.
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-    </div>
-  </div>
-</div>
-
-    <div class="" id="wrapper" style="height:100%">
-
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#side-toggle" id="side-toggle">
-                        MIRC Search
-                    </a>
-                </li>
-                <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#" data-toggle="modal" data-target="#cartmodal">Cart</a>
-                </li>
-                <li>
-                    <a href="#" data-toggle="modal" data-target="#arrangmentmodal">History</a>
-                </li>
-                <li>
-                    <a href="#" data-toggle="modal" data-target="#textresults">Text</a>
-                </li>
-                <li>
-                    <a href="#" data-toggle="modal" data-target="#help">Help</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper" style="height:100%">
-            <div class="container-fluid" style="height:100%">
-              <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                    <div id = "main" class="col-lg-12" style="height:85%">
-                </div>
+<div class="modal fade bs-help-modal-lg" tabindex="-1" role="dialog" aria-labelledby="help" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Help</h4>
+            </div>
+            <div id="helpbody" class="modal-body">
+                Your search results will appear below. The most relevant clip to your search query will be in the middle
+                surrounded by other related clips ranked by how close it matches the clip in the middle. You can click
+                on the #1 result in the middle to get all the information about that clip. If you click on a related
+                clip it will pull it to the middle and pull up the clips related to it. If you want to get information
+                on a clip that isnt in the middle you can hover over the videos on the side tool bar to get a brief
+                summary. If you don't like pictures you can click 'Text Results' on the top toolbar to get information
+                on all 13 videos.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-        <!-- /#page-content-wrapper -->
-
     </div>
-    <!-- /#wrapper -->
+</div>
 
-    <!-- Menu Toggle Script -->
-    <script>
+<div class="" id="wrapper" style="height:100%">
 
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#side-toggle" id="side-toggle">
+                    MIRC Search
+                </a>
+            </li>
+            <li>
+                <a href="#">Dashboard</a>
+            </li>
+            <li>
+                <a href="#" data-toggle="modal" data-target="#cartmodal">Cart</a>
+            </li>
+            <li>
+                <a href="#" data-toggle="modal" data-target="#arrangementModal">Overview</a>
+            </li>
+            <li>
+                <a href="#">About</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
 
-    </script>
+    <!-- Page Content -->
+    <div id="page-content-wrapper" style="height:100%">
+        <div class="container-fluid" style="height:100%">
+            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
 
-<script type ="text/javascript">
-/*
-* Just a brief on all the gotchas below.
-*
-* height and width is decided by the svg height and width /8
-* when hightlighted over the list item the svg goes to /7
-*
-* TODO - 9/14/14:
-* _x_ add "cart" functionality.
-* _x_ create modal for showing cart
-* _x_ create back and forward functionality
-* ___ add tabs for left sidebar information filtering
-* _x_ hide left sidebar
-* _x_ create middle image larger
-* _x_ make sure popovers stay in web browser and middle of image
-* ___ create reverse animation for backwards
-*
-*
-*/
+            <div id="main" class="col-lg-12" style="height:85%">
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
 
+</div>
+<!-- /#wrapper -->
 
-var allItems = [];
-
-
-var SIDE_BAR_TOGGLED = false;
-
-
-
-var pastArrangements = [];
-var futureArrangements = [];
-/********************************************************************
-* -an aside about how the back and forward functionality will work-
-*
-* When an AJAX request is received successfully the previous data is
-* pushed into the past arrangements. if the previous button is clicked
-* the currently displayed data will be pushed into future arrangements
-* and the pastArrangements will pop giving us the 'previous' images. At
-* this point you can click the next button to go 'forward' pushing the
-* current data onto past and popping the future.
-*
-*/
+<!-- Menu Toggle Script -->
+<script>
 
 
+</script>
+
+<script type="text/javascript">
+    /*
+     * Just a brief on all the gotchas below.
+     *
+     * height and width is decided by the svg height and width /8
+     * when hightlighted over the list item the svg goes to /7
+     *
+     * TODO - 9/14/14:
+     * _x_ add "cart" functionality.
+     * _x_ create modal for showing cart
+     * _x_ create back and forward functionality
+     * _x_ add tabs for left sidebar information filtering
+     * _x_ hide right sidebar
+     * _x_ create middle image larger
+     * _x_ make sure popovers stay in web browser and middle of image
+     * ___ create reverse animation for backwards
+     * TODO - UPDATED 5/1/2015:
+     * _x_ add overview
+     * _x_ create table for overview
+     * ___ find error for the "0"th element
+     * ___ add graphical distribution of searches
+     */
+
+
+    var allItems = [];
+
+
+    var SIDE_BAR_TOGGLED = false;
+
+
+    var pastArrangements = [];
+    var futureArrangements = [];
+
+    /********************************************************************
+     * -an aside about how the back and forward functionality will work-
+     *
+     * When an AJAX request is received successfully the previous data is
+     * pushed into the past arrangements. if the previous button is clicked
+     * the currently displayed data will be pushed into future arrangements
+     * and the pastArrangements will pop giving us the 'previous' images. At
+     * this point you can click the next button to go 'forward' pushing the
+     * current data onto past and popping the future.
+     *
+     */
 
 
 
-var svgContainer = d3.select("#main").append("svg").attr('id', 'svg')
-                                     .attr("class", "col-md-13");
 
 
-//flags that will hide the popover if an image is clicked to fix the bug
-var POPOVERFLAG = 0;
+    var svgContainer = d3.select("#main").append("svg").attr('id', 'svg')
+            .attr("class", "col-md-13");
 
-//sets up the circle positions and starting data
-var jsonCircles = {{data | safe}};
-//variable to make sure one circle clickable at a time
-var oneAtATime = true;
 
-var t0 = Date.now();
-//makes sure the data isn't messed up ~reason is on d3js git
-var data = jsonCircles.slice();
+    //flags that will hide the popover if an image is clicked to fix the bug
+    var POPOVERFLAG = 0;
 
-//variables for objects
-var obj;
-var rootIndex = 0;
-var div;
-var api_vid;
-var api_title;
-var api_desc;
-var first = true;
+    //sets up the circle positions and starting data
+    var jsonCircles = {{data | safe}};
+    //variable to make sure one circle clickable at a time
+    var oneAtATime = true;
 
-var width = document.getElementById('main').clientWidth;
-var height = document.getElementById('main').clientHeight;
+    var t0 = Date.now();
+    //makes sure the data isn't messed up ~reason is on d3js git
+    var data = jsonCircles.slice();
 
-//the function to load all the objects and add clickables
-var refresh = function(){
-var width = svg.clientWidth || svg.parentNode.clientWidth;
-var height = svg.clientHeight || svg.parentNode.clientHeight;
+    //variables for objects
+    var obj;
+    var rootIndex = 0;
+    var div;
+    var api_vid;
+    var api_title;
+    var api_desc;
+    var first = true;
+
+    var width = document.getElementById('main').clientWidth;
+    var height = document.getElementById('main').clientHeight;
+
+    //the function to load all the objects and add clickables
+    var refresh = function () {
+        var width = svg.clientWidth || svg.parentNode.clientWidth;
+        var height = svg.clientHeight || svg.parentNode.clientHeight;
 //var width = document.getElementById('svg').offsetWidth;
 //var height = document.getElementById('svg').clientHeight;
 
 //puts the height and width in form for new search submission.
-d3.select('#form').append("input").attr("type","hidden").attr("value",height)
-                  .attr("name","height");
-d3.select('#form').append("input").attr("type","hidden").attr("value",width)
-                  .attr("name","width");
+        d3.select('#form').append("input").attr("type", "hidden").attr("value", height)
+                .attr("name", "height");
+        d3.select('#form').append("input").attr("type", "hidden").attr("value", width)
+                .attr("name", "width");
 
 
 //remove all popovers
 //var listItem = d3.select("#side").selectAll("li")[0][POPOVERFLAG]
 //$(listItem).popover('hide');
 //d3.select(listItem).attr("class", "btn popovers");
-
-
+        console.log('pushing to test');
 //this next snippet loads all the information into the results modal
-document.getElementById("textmodalresults").innerHTML = '';
-var textmodal = d3.select("#textmodalresults").selectAll("p").data(data, function(d){return d.id;});
+        document.getElementById("textmodalresults").innerHTML = '';
+        var textmodal = d3.select("#textmodalresults").selectAll("p").data(data, function (d) {
+            return d.id;
+        });
 
-textmodal.enter()
-         .append("p")
-         .html(function(d){
-                             return "<b>#" + (d.id+1) + "</b>" +"<br />" +
-                             "<b>Title:</b> " + d.title + "<br />" +
-                             "<b>Identifier:</b> " + d.identifier + "<br />" +
-                             "<b>Summary: </b>" + d.summary + "<br /><br />";
-                           });
+        textmodal.enter()
+                .append("p")
+                .html(function (d) {
+                    return "<b>#" + (d.id + 1) + "</b>" + "<br />" +
+                            "<b>Title:</b> " + d.title + "<br />" +
+                            "<b>Identifier:</b> " + d.identifier + "<br />" +
+                            "<b>Summary: </b>" + d.summary + "<br /><br />";
+                });
 
-    //should remove all images so when ajax it loads the new images.
-    svgContainer.selectAll("image").remove();
-  //  var sideMenu = d3.select("#side");
-
-//var myNode = document.getElementById("side");
-//myNode.innerHTML = '';
-
-    //adds the data with a key to identify each of the individual objects
-    var circles = svgContainer.selectAll("image")
-            .data(data, function(d){return d.id;});
-
-    //adds the circles with their data from the JSON
-    circles.enter()
-            .append("image")
-            .attr("xlink:href", function(d){return d.imgAdr;})
-            .attr("x", function(d){return d.x_axis;})
-            .attr("y", function(d){return d.y_axis;})
-	        .attr("identifier", function(d){return d.identifier;})
-            .attr("width", function(d){console.log(width);if(d.id!=0){return width/8;}else{return width/6;} })
-            .attr("height", function(d){console.log(height);if(d.id!=0){return height/8;}else{return height/6;} })
-            .attr("root", function(d){return d.root;})
-            .attr("id", function(d){return d.id;})
-        //this is for the popovers
-           // .attr("role", "button")
-            .attr("data-placement",function(d){return "top";})
-            .attr("class","btn popovers")
-            .attr("data-toggle", "popover")
-            .attr("data-original-title", function(d){return d.title;})
-            .attr("data-content",function(d){return d.summary;})
-        //end of popovers
-            .on("error", function(){d3.select(this).attr("xlink:href", "https://www.google.com/images/srpr/logo11w.png");})
-        //.style("fill","transparent")
-        //this is the function that is executed when the circle is clicked on
-            .on("click",
-            function(d)
-            {
-                //makes sure the circle is not the 'root' and not another circle is moving
-                if(d3.select(this).attr("root") == 'false' && oneAtATime == true)
-                {
-
-                    //changes the variable to false so nothing else can move
-                    oneAtATime = false;
-
-                    //gets the root node
-                    var mid = d3.select("[root=true]");
-
-                    //moves the clicked circle to the roots position
-                    d3.select(this).transition().attr("x", mid.attr("x") ).attr("y", mid.attr("y")).attr("id", mid.attr("id")).ease("back").duration("3000")
-                        //once the animation is done
-                            .each("end",
-                            function (d)
-                            {
-                                pastArrangements.push(data);
-
-                                d3.select("[root=true]").remove();
-
-                                d3.select(this).attr("root", 'true');
+        //should remove all images so when ajax it loads the new images.
+        svgContainer.selectAll("image").remove();
+        //  var sideMenu = d3.select("#side");
 
 
-                                //creates a new object with the values from the previous clicked
-                                obj =
-                                {
-                                    "title" : d.title,
-				                            "identifier"   : d.identifier,
-                                    "x_axis": d.x_axis ,
-                                    "y_axis": d.y_axis,
-                                    "imgAdr": d.imgAdr,
-                                    "root"  : d.root,
-                                    "id"    : d.id,
-                                    "summary"  : d.summary,
-                                    "video" : d.video
-                                };
+        //adds the data with a key to identify each of the individual objects
+        var circles = svgContainer.selectAll("image")
+                .data(data, function (d) {
+                    return d.id;
+                });
+
+        //adds the circles with their data from the JSON
+        circles.enter()
+                .append("image")
+                .attr("xlink:href", function (d) {
+                    return d.imgAdr;
+                })
+                .attr("x", function (d) {
+                    return d.x_axis;
+                })
+                .attr("y", function (d) {
+                    return d.y_axis;
+                })
+                .attr("identifier", function (d) {
+                    return d.identifier;
+                })
+                .attr("width", function (d) {
+                    console.log(width);
+                    if (d.id != 0) {
+                        return width / 8;
+                    } else {
+                        return width / 6;
+                    }
+                })
+                .attr("height", function (d) {
+                    console.log(height);
+                    if (d.id != 0) {
+                        return height / 8;
+                    } else {
+                        return height / 6;
+                    }
+                })
+                .attr("root", function (d) {
+                    return d.root;
+                })
+                .attr("id", function (d) {
+                    return d.id;
+                })
+            //this is for the popovers
+            // .attr("role", "button")
+                .attr("data-placement", function (d) {
+                    return "top";
+                })
+                .attr("class", "btn popovers")
+                .attr("data-toggle", "popover")
+                .attr("data-original-title", function (d) {
+                    return d.title;
+                })
+                .attr("data-content", function (d) {
+                    return d.summary;
+                })
+            //end of popovers
+                .on("error", function () {
+                    d3.select(this).attr("xlink:href", "https://www.google.com/images/srpr/logo11w.png");
+                })
+            //.style("fill","transparent")
+            //this is the function that is executed when the circle is clicked on
+                .on("click",
+                function (d) {
+                    //makes sure the circle is not the 'root' and not another circle is moving
+                    if (d3.select(this).attr("root") == 'false' && oneAtATime == true) {
+
+                        //changes the variable to false so nothing else can move
+                        oneAtATime = false;
+
+                        //gets the root node
+                        var mid = d3.select("[root=true]");
+
+                        //moves the clicked circle to the roots position
+                        d3.select(this).transition().attr("x", mid.attr("x")).attr("y", mid.attr("y")).ease("back").duration("3000")
+                            //once the animation is done
+                                .each("end",
+                                function (d) {
+                                    pastArrangements.push(data);
+
+                                    d3.select("[root=true]").remove();
+
+                                    d3.select(this).attr("root", 'true');
 
 
-                                //removes the data from the old root from the JSON array
-                                data.splice(rootIndex, 1);
+                                    //creates a new object with the values from the previous clicked
+                                    obj =
+                                    {
+                                        "title": d.title,
+                                        "identifier": d.identifier,
+                                        "x_axis": d.x_axis,
+                                        "y_axis": d.y_axis,
+                                        "imgAdr": d.imgAdr,
+                                        "root": d.root,
+                                        "id": d.id,
+                                        "summary": d.summary,
+                                        "video": d.video
+                                    };
+
+                                    //removes the data from the old root from the JSON array
+                                    //data.splice(rootIndex, 1);
 
 
-                                //adds the new obj to the JSON array
-                                data.push(obj);
+                                    //adds the new obj to the JSON array
+                                    //data.push(obj);
 
 
-                                //changes the array values of the now root node
-                                d.x_axis = mid.attr("x");
-                                d.y_axis = mid.attr("y");
-                                d.root = 'true';
-                                d.id = mid.attr("id");
-                                d.title = mid.attr("title");
-                                //d.DID = mid.attr("pid");
+                                    //changes the array values of the now root node
+//                                d.x_axis = mid.attr("x");
+//
+//                                d.y_axis = mid.attr("y");
+//                                d.root = 'true';
+//                                d.id = mid.attr("id");
+//                                d.title = mid.attr("title");
 
-                                rootIndex = data.indexOf(d);
+                                    obj.x_axis = mid.attr("x");
 
-
-				d3.xhr('/mirc/ajax/')
-		    .header("X-CSRFToken", csrftoken)
-		    .header("Content-Type", "application/json")
-		    .post(JSON.stringify({identifier: d3.select(this).attr("identifier"), width: width, height: height}),function(error, newData)
-                    {
-                      data = JSON.parse(newData.response);
-                      swirl();
-                      refresh();
-                    });
+                                    obj.y_axis = mid.attr("y");
+                                    obj.root = 'true';
+                                    //obj.id = mid.attr("id");
+                                    rootIndex = data.indexOf(d);
 
 
-                }//end of transition
-              );
+                                    d3.xhr('/mirc/ajax/')
+                                            .header("X-CSRFToken", csrftoken)
+                                            .header("Content-Type", "application/json")
+                                            .post(JSON.stringify({
+                                                identifier: d3.select(this).attr("identifier"),
+                                                width: width,
+                                                height: height
+                                            }), function (error, newData) {
+                                                data = JSON.parse(newData.response);
+                                                console.log(data);
+                                                swirl();
+                                                refresh();
+                                            });
 
 
-
-                }
-                else if (d3.select(this).attr("root") == 'true' && oneAtATime == true)
-                {
-
-                   //to clear the text incase the user used ajax
-
-                    var roottitle = d3.select("#rootmodaltitle");
-                    roottitle.text("");
-
-                    roottitle.text(d.title);
-
-                    var rootmodal = d3.select("#textmodalroot");
-                    rootmodal.html("");
-                    rootmodal.append("p")
-                             .html("<b>Title:</b> " + d.title + "<br />" + "<b>Identifier:</b> "  + d.identifier +  "<br />" + "<b>Summary:</b> " + d.summary +
-                             "<div class='row'><center><video autoplay='autoplay' width='320' height='240' controls> <source src='http://dvr-streaming.mirc.sc.edu/WBTW_649_Acc1.m4v' type='video/mp4'> Your browser does not support the video tag. </video></center></div>");
+                                }//end of transition
+                        );
 
 
-                    $("#rootmodal").modal('show');
+                    }
+                    else if (d3.select(this).attr("root") == 'true' && oneAtATime == true) {
 
-                }
+                        //to clear the text incase the user used ajax
 
-            })
-            .on("mouseover", function(d){
+                        var roottitle = d3.select("#rootmodaltitle");
+                        roottitle.text("");
 
-            })
-            .on("mouseout", function(d){
+                        roottitle.text(d.title);
 
-            });
+                        var rootmodal = d3.select("#textmodalroot");
+                        rootmodal.html("");
+                        rootmodal.append("p")
+                                .html("<b>Title:</b> " + d.title + "<br />" + "<b>Identifier:</b> " + d.identifier + "<br />" + "<b>Summary:</b> " + d.summary);
+                        //             + "<video width=\"320\" height=\"240\" autoplay>
+                        //  <source src=\"http://dvr-streaming.mirc.sc.edu/autogenerated/MVTN_23-129_Mez1_CMS_524_Acc.m4v\" type=\"video/mp4\">
+                        //   Your browser does not support the video tag.
+                        // </video>");
+
+
+                        $("#rootmodal").modal('show');
+
+                    }
+
+                });
 
 
 //            var listMenu = sideMenu.selectAll("li")
- //                          .data(data, function(d){return d.id;});
+        //                          .data(data, function(d){return d.id;});
 
-/*
-    listMenu.enter()
-            .append("li")
-            .append("a")
-            .attr("href","#")
-            .style("text-align","left")
-            .text(function(d){return "#" + (d.id + 1) + ". " + d.identifier;})
-            /*
-            .on("mouseover",function(d){
-               var images = d3.select("svg").selectAll("image");
-               d3.select(images[0][d.id]).attr("width", width/7).attr("height",height/7);
-            })
-            .on("mouseout", function(d){
-               var images = d3.select("svg").selectAll("image");
-               d3.select(images[0][d.id]).attr("width", width/8).attr("height",height/8);
-            })
-            */
-            ;
-
+        /*
+         listMenu.enter()
+         .append("li")
+         .append("a")
+         .attr("href","#")
+         .style("text-align","left")
+         .text(function(d){return "#" + (d.id + 1) + ". " + d.identifier;})
+         /*
+         .on("mouseover",function(d){
+         var images = d3.select("svg").selectAll("image");
+         d3.select(images[0][d.id]).attr("width", width/7).attr("height",height/7);
+         })
+         .on("mouseout", function(d){
+         var images = d3.select("svg").selectAll("image");
+         d3.select(images[0][d.id]).attr("width", width/8).attr("height",height/8);
+         })
+         */
 
 
 //this is for the popover box within bootstrap
-$("[data-toggle=popover]")
-.popover({html:true , container:'body', trigger: 'hover'});
+        $("[data-toggle=popover]")
+                .popover({html: true, container: 'body', trigger: 'hover', viewport: 'body'});
 //allows things to be clicked again
-oneAtATime = true;
+        oneAtATime = true;
+    };
 
-}
 
+    var swirl = function () {
+        var timeV = 0;
+        var id = setInterval(function () {
 
-var swirl = function()
-{
-    var timeV = 0;
-    var id = setInterval(function() {
+            var delta = (Date.now() - t0);
+            var mid = d3.select("[root=true]");
 
-        var delta = (Date.now() - t0);
-        var mid = d3.select("[root=true]");
+            d3.selectAll("image").attr("transform", function (d) {
+                if (d.root != mid.attr("root")) {
+                    return "rotate(" + (delta * d.id) + "," + mid.attr("x") + "," + mid.attr("y") + ")";
+                }
+            });
+            timeV++;
+            if (timeV == 15) {
+                mid.moveToBack();
+                clearInterval(id);
+                d3.selectAll("image").transition().ease("elastic").attr("transform", function (d) {
+                    return "rotate(" + 0 + ")";
+                });
+            }
 
-        d3.selectAll("image").attr("transform", function(d) {
-            if(d.root != mid.attr("root")){
-                return "rotate(" + (delta * d.id) +  "," + mid.attr("x") + "," + mid.attr("y") + ")";
+        }, 15);
+
+    }
+
+    d3.selection.prototype.moveToBack = function () {
+        return this.each(function () {
+            var firstChild = this.parentNode.firstChild;
+            if (firstChild) {
+                this.parentNode.insertBefore(this, firstChild);
             }
         });
-        timeV++;
-        if(timeV == 15){
-            mid.moveToBack();
-            clearInterval(id);
-            d3.selectAll("image").transition().ease("elastic").attr("transform", function(d){return "rotate(" + 0 + ")";});
+    };
+
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
         }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
 
-    }, 15);
-
-}
-
-d3.selection.prototype.moveToBack = function() {
-    return this.each(function() {
-        var firstChild = this.parentNode.firstChild;
-        if (firstChild) {
-            this.parentNode.insertBefore(this, firstChild);
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    $.ajaxSetup({
+        beforeSend: function (xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
         }
     });
-};
 
-function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie != '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = jQuery.trim(cookies[i]);
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+    function rearrange() {
+        var width = svg.clientWidth || svg.parentNode.clientWidth;
+        var height = svg.clientHeight || svg.parentNode.clientHeight;
+
+        d3.xhr('/mirc/rearrange/')
+                .header("X-CSRFToken", csrftoken)
+                .header("Content-Type", "application/json")
+                .post(JSON.stringify({data: data, width: width, height: height}), function (error, newData) {
+                    data = JSON.parse(newData.response);
+                    swirl();
+                    refresh();
+                });
+    }
+
+    /********************************************************************
+     * goBack()
+     *
+     * This is the function that handles "going back" it takes the previous arrangement
+     * if available and throws it back.
+     */
+    function goBack() {
+        if (pastArrangements.length == 0) {
+            console.log("pastArrangmentsnono");
+            return false;
+        }
+        var past = [];
+        past = pastArrangements.pop();
+        futureArrangements.push(data);
+        data = past;
+        swirl();
+        refresh();
+    }
+    /********************************************************************
+     * goForward()
+     *
+     * you can only go forward once you have gone back.
+     */
+    function goForward() {
+        if (futureArrangements.length == 0) {
+            return false;
+        }
+        var future = [];
+        future = futureArrangements.pop();
+        pastArrangements.push(data);
+        data = future;
+        swirl();
+        refresh();
+    }
+
+    /********************************************************************
+     * toggleSide()
+     *
+     * toggles the sidebar with information about the videos
+     * Depends on the SIDE_BAR_TOGGLED flag of true or false.
+     *
+     */
+    function toggleSide() {
+        if (SIDE_BAR_TOGGLED) {
+            d3.select("#sidebar").style("visibility", "");
+            d3.select("#main").attr("class", "col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2");
+            rearrange();
+            SIDE_BAR_TOGGLED = false;
+        }
+        else {
+            d3.select("#sidebar").style("visibility", "hidden");
+            d3.select("#main").attr("class", "col-sm-12 col-md-12");
+            rearrange();
+            SIDE_BAR_TOGGLED = true;
+        }
+    }
+
+
+    /********************************************************************
+     * refreshCartModal()
+     *
+     * makes sure the cart Modal is up to date.
+     *
+     */
+    function refreshCartModal() {
+
+        if (allItems.length == 0) {
+            document.getElementById("cartItems").innerHTML = '';
+            return false;
+        }
+
+        document.getElementById("cartItems").innerHTML = '';
+        var cartmodal = d3.select("#cartItems").selectAll("p").data(allItems, function (d) {
+            return d.id;
+        });
+        cartmodal.enter()
+                .append("p")
+                .html(function (d) {
+                    return "<b>#" + (d.id + 1) + "</b>" + "<br />" +
+                            "<b>Title:</b> " + d.title + "<br />";
+                    // "<b>Identifier:</b> " + d.id + "<br />" +
+                    //"<image src=" + d.imageAdr + "/>";
+                })
+                .append("div")
+                .html(function (d) {
+                    return "<image src=" + d.imageAdr + " data-dismiss=\"modal\"/>";
+                })
+                .on("click", function (d) {
+                    d3.xhr('/mirc/ajax/')
+                            .header("X-CSRFToken", csrftoken)
+                            .header("Content-Type", "application/json")
+                            .post(JSON.stringify({
+                                identifier: d.id,
+                                width: width,
+                                height: height
+                            }), function (error, newData) {
+                                pastArrangements.push(data);
+                                data = JSON.parse(newData.response);
+                                swirl();
+                                refresh();
+                            });
+                });
+
+
+    }
+
+
+    /********************************************************************
+     *addToCartWrapper()
+     *
+     * This function grabs the root node and adds it to the cart. This is
+     * necessary because its hard to get what the root node is in html and
+     * then sending it to the cart straight from the html is unfeasible.
+     *
+     */
+    function addToCartWrapper() {
+
+        var root = d3.select("[root=true]");
+        var id = "";
+        var title = "";
+        var imageAdr = "";
+
+        id = root.attr("identifier");
+        title = root.attr("data-original-title");
+        imageAdr = root.attr("xlink:href");
+
+        addToCart(id, title, imageAdr);
+
+    }
+
+
+    /**********************************************************
+     * readCart()
+     *
+     * checks to see if there is a cart if so it grabs er'thang
+     * and throws it into the allItems array so you can access them.
+     *
+     */
+    function readCart() {
+        if (!supports_html5_storage()) {
+            return false;
+        }
+        hasCart = (localStorage["has.cart"] == "true");
+        if (!hasCart) {
+            return false;
+        }
+        numCart = parseInt(localStorage["num.cart"]);
+        allItems = new Array(numCart);
+        var id = null;
+        var title = null;
+        var imageAdr = null;
+        for (var i = 0; i < numCart; i++) {
+            id = localStorage["cart.item." + i + ".id"];
+            title = localStorage["cart.item." + i + ".title"];
+            imageAdr = localStorage["cart.item." + i + ".imageAdr"];
+            allItems[i] = new Item(id, title, imageAdr);
+        }
+        refreshCartModal();
+        return true;
+
+    }
+
+    /**********************************************************
+     * addToCart(id, title, imageAdr)
+     * id: the video id
+     * title: the video title
+     * imageAdr: the image pathname
+     *
+     * this adds an item to the cart
+     */
+    function addToCart(id, title, imageAdr) {
+        if (!supports_html5_storage()) {
+            return false;
+        }
+        hasCart = (localStorage["has.cart"] == "true");
+        if (!hasCart) {
+            localStorage["has.cart"] = "true";
+            numCart = 0;
+        }
+        else {
+            numCart = parseInt(localStorage["num.cart"]);
+        }
+        localStorage["cart.item." + numCart + ".id"] = id;
+        localStorage["cart.item." + numCart + ".title"] = title;
+        localStorage["cart.item." + numCart + ".imageAdr"] = imageAdr;
+        numCart++;
+        localStorage["num.cart"] = numCart;
+        item = new Item(id, title, imageAdr);
+        allItems.push(item);
+        refreshCartModal();
+    }
+
+    /**********************************************************
+     * removeFromCart(id)
+     * id: the video id
+     *
+     * iterates through cart and removes the key value pairs
+     * associated with that particular video
+     */
+    function removeFromCart(id) {
+        if (!supports_html5_storage()) {
+            return false;
+        }
+        hasCart = (localStorage["has.cart"] == "true");
+        if (!hasCart) {
+            return false;
+        }
+        numCart = parseInt(localStorage["num.cart"]);
+        for (var i = 0; i < numCart; i++) {
+            temp = localStorage["cart.item." + i + ".id"];
+            if (temp == id) {
+                localStorage.removeItem("cart.item." + i + ".id");
+                localStorage.removeItem("cart.item." + i + ".title");
+                localStorage.removeItem("cart.item." + i + ".imageAdr");
+                numCart = numCart - 1;
+                if (numCart == 0) {
+                    localStorage["has.cart"] = "false";
+                }
+                localStorage["num.cart"] = numCart;
+                refreshCartModal();
                 break;
             }
         }
     }
-    return cookieValue;
-}
-var csrftoken = getCookie('csrftoken');
 
-function csrfSafeMethod(method) {
-    // these HTTP methods do not require CSRF protection
-    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-}
-$.ajaxSetup({
-    beforeSend: function(xhr, settings) {
-        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+
+    /**********************************************************
+     * clearCart()
+     *
+     * Clears all the local storage of the cart.
+     *
+     */
+    function clearCart() {
+        localStorage.clear();
+        allItems = [];
+        refreshCartModal();
+    }
+
+
+    /**********************************************************
+     * Item(id, title, imageAdr)
+     * id: the video id
+     * title: the video's title
+     * imageAdr: the path name for the image related to the vid
+     *
+     * this function is basically a structure for a video "item"
+     * in our cart.
+     */
+    function Item(id, title, imageAdr) {
+
+        this.id = id;
+        this.title = title;
+        this.imageAdr = imageAdr;
+    }
+
+
+    /**********************************************************
+     * supports_html5_storage()
+     *
+     * checks to see if the browser supports local storage.
+     * More than likely yes. and if no then you wont be able to
+     * see the SVG probably anyways. Just a little safety check
+     * more than anything.
+     *
+     */
+    function supports_html5_storage() {
+        try {
+            return 'localStorage' in window && window['localStorage'] !== null;
+        } catch (e) {
+            return false;
         }
     }
-});
 
-function rearrange()
-{
-var width = svg.clientWidth || svg.parentNode.clientWidth;
-var height = svg.clientHeight || svg.parentNode.clientHeight;
-
-            d3.xhr('/mirc/rearrange/')
-		    .header("X-CSRFToken", csrftoken)
-		    .header("Content-Type", "application/json")
-		    .post(JSON.stringify({data: data, width: width, height: height}),function(error, newData)
-                    {
-                      data = JSON.parse(newData.response);
-                      swirl();
-                      refresh();
-                    });
-}
-
-/********************************************************************
-* goBack()
-*
-* This is the function that handles "going back" it takes the previous arrangement
-* if available and throws it back.
-*/
-function goBack()
-{
- if(pastArrangements.length == 0)
- {
-   console.log("pastArrangmentsnono");
-   return false;
- }
- var past = [];
- past = pastArrangements.pop();
- futureArrangements.push(data);
- data = past;
- swirl();
- refresh();
-}
-/********************************************************************
-* goForward()
-*
-* you can only go forward once you have gone back.
-*/
-function goForward()
-{
-  if(futureArrangements.length == 0)
-  {
-    return false;
-  }
-  var future = [];
-  future = futureArrangements.pop();
-  pastArrangements.push(data);
-  data = future;
-  swirl();
-  refresh();
-}
-
-/********************************************************************
-* toggleSide()
-*
-* toggles the sidebar with information about the videos
-* Depends on the SIDE_BAR_TOGGLED flag of true or false.
-*
-*/
-function toggleSide()
-{
-  if(SIDE_BAR_TOGGLED)
-  {
-    d3.select("#sidebar").style("visibility","");
-    d3.select("#main").attr("class","col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2");
-    rearrange();
-    SIDE_BAR_TOGGLED = false;
-  }
-  else
-  {
-    d3.select("#sidebar").style("visibility","hidden");
-    d3.select("#main").attr("class","col-sm-12 col-md-12");
-    rearrange();
-    SIDE_BAR_TOGGLED = true;
-  }
-}
+    //get all past arrangments and show them all pretty like.
+    // for (j = 0; j < pastArrangements.length; j++)
+    // {
+    //   for (i = 0; i < pastArrangements[j].length; i++) {
+    //     //implement the prettyness hur.
+    //     console.log(pastArrangements[j][i].title);
+    //   }
+    // }
+    //
+    // //get all the future arrangments and show them all pretty like.
+    // for (j = 0; j < futureArrangements.length; j++)
+    // {
+    //   for (i = 0; i < futureArrangements[j].length; i++)
+    //   {
+    //     //implement the prettyness here
+    //     console.log(futureArrangements[j][i].title);
+    //   }
+    // }
+    var totalArrangements;
+    var TESTCAT;
+    //when it is shown we gonna dynamically generate the html
+    $('#arrangementModal').on('show.bs.modal', function (e) {
+        //we want to create a string of objects at the top of the page
+        // similar to 0-0-0-0-[]-0-0
+        // or something like that...
+        //go go build it here.
+        totalArrangements = pastArrangements;
+        console.log(totalArrangements);
+        //still have to get the present some how
+        //for (i = 0; i < totalArrangements.length; i++)
+        //{
+        //  <li role="presentation"><a href="#">Messages</a></li>
+        //}
 
 
-/********************************************************************
-* refreshCartModal()
-*
-* makes sure the cart Modal is up to date.
-*
-*/
-function refreshCartModal()
-{
+        document.getElementById("arrangementPills").innerHTML = '';
+        var arr = [];
+        for (i = 0; i < totalArrangements.length; i++) {
+            arr.push(i);
+        }
+        pills = d3.select("#arrangementPills").selectAll("li").data(arr, function (d) {
+            return d;
+        });
+        pills.enter().append("li").attr("role", "presentation").append("a").html(function (d) {
+            return d + 1;
+        }).on("click", function (d) {
+            createArrangementTable(totalArrangements[d]);
+        });
+    });
 
-  if (allItems.length == 0)
-  {
-    document.getElementById("cartItems").innerHTML = '';
-    return false;
-  }
-
-  document.getElementById("cartItems").innerHTML = '';
-  var cartmodal = d3.select("#cartItems").selectAll("p").data(allItems, function(d){return d.id;});
-  cartmodal.enter()
-         .append("p")
-         .html(function(d){
-                             return "<b>#" + (d.id+1) + "</b>" +"<br />" +
-                             "<b>Title:</b> " + d.title + "<br />";
-                            // "<b>Identifier:</b> " + d.id + "<br />" +
-                             //"<image src=" + d.imageAdr + "/>";
-                           })
-         .append("div")
-         .html(function(d){return "<image src=" + d.imageAdr + " data-dismiss=\"modal\"/>";})
-         .on("click", function(d){
-             d3.xhr('/mirc/ajax/')
-		    .header("X-CSRFToken", csrftoken)
-		    .header("Content-Type", "application/json")
-		    .post(JSON.stringify({identifier: d.id, width: width, height: height}),function(error, newData)
-                    {
-                      pastArrangements.push(data);
-                      data = JSON.parse(newData.response);
-                      swirl();
-                      refresh();
-                    });
-          });
+    /************************************************************************************
+     * createArrangementTable()
+     *
+     * this creates the table that contains all the titles of the arrangement and adds the
+     * html into the
+     *
+     *
+     */
 
 
+    function createArrangementTable(currentArrangement) {
+        var arrangementTable = d3.select("#arrangementTable");
+        document.getElementById("arrangementTable").innerHTML = '';
+        console.log("CURRENT ARRANGEMENT");
+        console.log(currentArrangement);
 
-}
-
-
-
-/********************************************************************
-*addToCartWrapper()
-*
-* This function grabs the root node and adds it to the cart. This is
-* necessary because its hard to get what the root node is in html and
-* then sending it to the cart straight from the html is unfeasible.
-*
-*/
-function addToCartWrapper()
-{
-
-  var root = d3.select("[root=true]");
-  var id = "";
-  var title = "";
-  var imageAdr = "";
-
-  id = root.attr("identifier");
-  title = root.attr("data-original-title");
-  imageAdr = root.attr("xlink:href");
-
-  addToCart(id, title, imageAdr);
-
-}
-
-
-
-
-/**********************************************************
-* readCart()
-*
-* checks to see if there is a cart if so it grabs er'thang
-* and throws it into the allItems array so you can access them.
-*
-*/
-function readCart()
-{
-  if(!supports_html5_storage())
-  {
-    return false;
-  }
-  hasCart = (localStorage["has.cart"] == "true");
-  if(!hasCart)
-  {
-    return false;
-  }
-  numCart = parseInt(localStorage["num.cart"]);
-  allItems = new Array(numCart);
-  var id = null;
-  var title = null;
-  var imageAdr = null;
-  for (var i = 0; i < numCart; i++)
-  {
-    id = localStorage["cart.item."+i+".id"];
-    title = localStorage["cart.item."+i+".title"];
-    imageAdr = localStorage["cart.item."+i+".imageAdr"];
-    allItems[i] = new Item(id, title, imageAdr);
-  }
-  refreshCartModal();
-  return true;
-
-}
-
-/**********************************************************
-* addToCart(id, title, imageAdr)
-* id: the video id
-* title: the video title
-* imageAdr: the image pathname
- *
-* this adds an item to the cart
-*/
-function addToCart(id, title, imageAdr)
-{
-  if(!supports_html5_storage())
-  {
-    return false;
-  }
-  hasCart = (localStorage["has.cart"] == "true");
-  if(!hasCart)
-  {
-    localStorage["has.cart"] = "true";
-    numCart = 0;
-  }
-  else
-  {
-    numCart = parseInt(localStorage["num.cart"]);
-  }
-  localStorage["cart.item."+numCart+".id"] = id;
-  localStorage["cart.item."+numCart+".title"] = title;
-  localStorage["cart.item."+numCart+".imageAdr"] = imageAdr;
-  numCart++;
-  localStorage["num.cart"] = numCart;
-  item = new Item(id, title, imageAdr);
-  allItems.push(item);
-  refreshCartModal();
-}
-
-/**********************************************************
-* removeFromCart(id)
-* id: the video id
-*
- * iterates through cart and removes the key value pairs
- * associated with that particular video
-*/
-function removeFromCart(id)
-{
-  if(!supports_html5_storage())
-  {
-    return false;
-  }
-  hasCart = (localStorage["has.cart"] == "true");
-  if(!hasCart)
-  {
-    return false;
-  }
-  numCart = parseInt(localStorage["num.cart"]);
-  for(var i = 0; i < numCart; i++)
-  {
-    temp = localStorage["cart.item."+i+".id"];
-    if (temp == id)
-    {
-      localStorage.removeItem("cart.item."+i+".id");
-      localStorage.removeItem("cart.item."+i+".title");
-      localStorage.removeItem("cart.item."+i+".imageAdr");
-      numCart = numCart - 1;
-      if (numCart == 0)
-      {
-        localStorage["has.cart"] = "false";
-      }
-      localStorage["num.cart"] = numCart;
-      refreshCartModal();
-      break;
+//  for (i = 0; i < currentArrangement.length; i++)
+//  {
+//    arrangementTable.append("tr")
+//                    .append("td")
+//                    .html(function(d){
+//                      return d.id;
+//                    })
+//                    .append("td")
+//                    .html(function(d)
+//                    {
+//                      return d.title;
+//                    });
+//  }
+        arrangementTable = arrangementTable.selectAll("tr").data(currentArrangement, function (d) {
+            return d.id + 1;
+        });
+        arrangementTable = arrangementTable.enter().append("tr").sort(function (a, b) {
+            return d3.ascending(a.id, b.id);
+        });
+        arrangementTable.append("td").html(function (d) {
+            return d.id;
+        });
+        arrangementTable.append("td").html(function (d) {
+            return d.title;
+        });
     }
-  }
-}
 
+    //executes refresh when the page is loaded
+    refresh();
+    readCart();
+    refreshCartModal();
+    console.log({{ data | safe}});
 
-
-/**********************************************************
-* clearCart()
-*
- * Clears all the local storage of the cart.
-*
-*/
-function clearCart()
-{
-  localStorage.clear();
-  allItems = [];
-  refreshCartModal();
-}
-
-
-
-/**********************************************************
-* Item(id, title, imageAdr)
-* id: the video id
-* title: the video's title
-* imageAdr: the path name for the image related to the vid
-*
-* this function is basically a structure for a video "item"
-* in our cart.
-*/
-function Item(id, title, imageAdr)
-{
-
-  this.id = id;
-  this.title = title;
-  this.imageAdr = imageAdr;
-}
-
-
-
-/**********************************************************
-* supports_html5_storage()
-*
-* checks to see if the browser supports local storage.
- * More than likely yes. and if no then you wont be able to
- * see the SVG probably anyways. Just a little safety check
-* more than anything.
-*
-*/
-function supports_html5_storage() {
-  try {
-    return 'localStorage' in window && window['localStorage'] !== null;
-  } catch (e) {
-    return false;
-  }
-}
-
-//get all past arrangments and show them all pretty like.
-// for (j = 0; j < pastArrangements.length; j++)
-// {
-//   for (i = 0; i < pastArrangements[j].length; i++) {
-//     //implement the prettyness hur.
-//     console.log(pastArrangements[j][i].title);
-//   }
-// }
-//
-// //get all the future arrangments and show them all pretty like.
-// for (j = 0; j < futureArrangements.length; j++)
-// {
-//   for (i = 0; i < futureArrangements[j].length; i++)
-//   {
-//     //implement the prettyness here
-//     console.log(futureArrangements[j][i].title);
-//   }
-// }
-
-//when it is shown we gonna dynamically generate the html
-$('#arrangementModal').on('show.bs.modal', function(e) {
-
-});
-
-
-//executes refresh when the page is loaded
-refresh();
-readCart();
-refreshCartModal();
-console.log({{data | safe}});
-
-$("#menu-toggle").click(function(e) {
+    $("#menu-toggle").click(function (e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
 
-        setTimeout(function(){rearrange();}, 300);
+        setTimeout(function () {
+            rearrange();
+        }, 300);
     });
 
-$("#side-toggle").click(function(e)
-{
-  e.preventDefault();
-  $("#wrapper").toggleClass("toggled");
-  setTimeout(function(){rearrange();},300);
-});
+    $("#side-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+        setTimeout(function () {
+            rearrange();
+        }, 300);
+    });
 
 </script>
 
